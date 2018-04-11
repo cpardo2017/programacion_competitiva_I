@@ -3,38 +3,74 @@
 #include <math.h>
 
 int main()
-{
-    int num_fila,i,j,contador,factor,verificador;
-    float pi;
-    scanf("%d",&num_fila);
-    while(num_fila>0)
-    {
-        int pares=0;
-        int numeros[num_fila];
-        for(i=1;i<=num_fila;i++)
-        {
-            scanf("%d",&numeros[i]);
-        }
+{	
+	int cantidad,i,j,d,limite,verificador;
+	float pi,combinaciones,pares;
 
-        for(i=1;i<=num_fila;i++)
-        {
-            for(j=i+1;j<=num_fila;j++)
-            {
-                verificador=1;
-                pares++;
-                for(factor=2;factor<=numeros[i];factor++)
-                {
-                    if(numeros[i]%factor==0 && numeros[j]%factor==0)
-                    {
-                        verificador=0;
-                        break;
-                    }
-                }
-                if(verificador==1){contador++;}
-            }
-        }
-        pi=sqrt(6*pares/contador);
-        printf("el valor de pi es %f",pi);
-    }
-  return 0;
+	for(;;)
+	{
+		scanf("%d",&cantidad);
+
+
+		if(cantidad==0)
+		{
+			break;
+		}
+
+		int numeros[cantidad];
+		combinaciones=0.0f;
+		pares=0.0f;
+
+		for(i=0;i<cantidad;i++)
+		{
+			scanf("%d",&numeros[i]);
+		}
+
+		for(i=0;i<cantidad;i++)
+		{
+			for(j=i+1;j<cantidad;j++)
+			{
+				combinaciones++;
+				if(numeros[i]<numeros[j])
+				{
+					limite=numeros[i];
+				}
+
+				else
+				{
+					limite=numeros[j];
+				}
+
+				verificador=0;
+
+				for(d=2;d<=limite;d++)
+				{
+					if(numeros[i]%d==0 && numeros[j]%d==0)
+					{
+						verificador=1;
+						break;
+					}
+				}
+				
+				if(verificador==0)
+				{
+					pares++;
+				}
+			}
+		}
+
+		if(pares!=0)
+		{
+			pi=(6.0f*combinaciones)/pares;
+			pi=sqrt(pi);
+			printf("%*f\n",6,pi);	
+		}
+		
+		else
+		{
+			printf("No estimate for this data set.\n");
+		}	
+	}
+
+	return 0;
 }
