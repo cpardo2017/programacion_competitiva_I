@@ -5,7 +5,7 @@
 int main()
 {	
 	int cantidad,i,j,d,limite,verificador;
-	float pi,combinaciones,pares;
+	double pi,combinaciones,pares;
 
 	for(;;)
 	{
@@ -63,7 +63,7 @@ int main()
 		{
 			pi=(6.0f*combinaciones)/pares;
 			pi=sqrt(pi);
-			printf("%*f\n",6,pi);	
+			printf("%lf\n",pi);	
 		}
 		
 		else
