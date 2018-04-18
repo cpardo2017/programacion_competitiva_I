@@ -35,7 +35,7 @@ int main()
 
 	
 
-	for(a=0;a<i;)
+	for(a=0;a<i-1;)
 	{
 		if(num_pares[a]>num_pares[a+1])
 		{
@@ -55,7 +55,7 @@ int main()
 		}
 	}
 
-	for(a=0;a<j;)
+	for(a=0;a<j-1;)
 	{
 		if(num_impares[a]<num_impares[a+1])
 		{
@@ -82,7 +82,7 @@ int main()
 	}
 	printf("\n");
 
-	printf("los numeros impares son\n");
+	printf("los numeros impares son:\n");
 
 	for(a=0;a<j;a++)
 	{
@@ -90,8 +90,6 @@ int main()
 	}
 
 	printf("\n");
-
-	printf("%d %d\n",i,j);
 
 	return 0;
 }
