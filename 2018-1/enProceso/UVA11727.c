@@ -4,6 +4,7 @@
 int main()
 {	
 	int cantidad,i,c,j,aux;
+	int cc=2;
 
 	int *salario;
 
@@ -17,23 +18,26 @@ int main()
 
 	scanf("%d",&cantidad);
 
-	for(i=0;i<cantidad;i++)
+	for(i=0;i<=cantidad;i++)
 	{
 		j=0;
 
-		while((c=fgetc(stdin)!='\n'))
+		while((cc=fgetc(stdin)!='\n'))
 		{
-				printf("%d\n",c);
+			printf("%d\n",cc);
 
 			if(c>='0' && c<='9')
 			{
 				salario[j]=salario[j]*10+(c-'0');
+
 			}
 
 			else
 			{
 				j++;
 			}
+
+			
 		}
 
 		for(j=0;j<3;)
@@ -56,6 +60,7 @@ int main()
 				j=0;
 			}
 		}
+
 
 	}
 
