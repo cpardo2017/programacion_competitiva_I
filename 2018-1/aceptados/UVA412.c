@@ -4,9 +4,10 @@
 
 int main()
 {	
-	int cantidad,i,j,d,resto,verificador,dividendo,divisor;
+	int cantidad,i,j,d,resto,verificador,dividendo,divisor,a;
 	double pi,combinaciones,pares;
-	int contador=1;
+	int contador=0;
+
 
 	for(;;)
 	{
@@ -34,17 +35,24 @@ int main()
 			{
 				combinaciones++;
 				resto=0;
-				if(numeros[i]<numeros[j])
-					{
-						dividendo=numeros[j];
-						divisor=numeros[i];
-					}
 
-					else
-					{
-						dividendo=numeros[i];
-						divisor=numeros[j];
-					}
+				if(numeros[i]==1 || numeros[j]==1)
+				{
+					pares++;
+					continue;
+				}
+
+				if(numeros[i]<numeros[j])
+				{
+					dividendo=numeros[j];
+					divisor=numeros[i];
+				}
+
+				else
+				{
+					dividendo=numeros[i];
+					divisor=numeros[j];
+				}
 
 				do
 				{
@@ -57,21 +65,27 @@ int main()
 				{
 					pares++;
 				}
-
-				
 			}
 		}
 
-		if(contador==480)
+
+
+		if(pares>0)
 		{
-			for(i=0;i<cantidad;i++)
-			{
-				printf("%d\n",numeros[i]);
-			}
+			pi=(6*combinaciones)/pares;
+			pi=sqrt(pi);
+			printf("%lf\n",pi);
 		}
+
+		else
+		{
+			printf("No estimate for this data set.\n");
+		}
+
 
 			
 	}
+
 
 	return 0;
 }

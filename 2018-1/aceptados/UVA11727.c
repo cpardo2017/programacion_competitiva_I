@@ -1,30 +1,31 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 int main()
 {	
 	int cantidad,i,c,j,aux;
-	int cc=2;
+	int salario[3];
 
-	int *salario;
+	/*int *salario;
 
-	salario = (int*) malloc(sizeof(int)*3);
-
-	salario[0] = 0;
-	salario[1] = 0;
-	salario[2] = 0;
-
+	salario = (int*) malloc(sizeof(int)*3);*/
 
 
 	scanf("%d",&cantidad);
+	c=fgetc(stdin);
+	assert(c=='\n');
 
-	for(i=0;i<=cantidad;i++)
+	for(i=0;i<cantidad;i++)
 	{
 		j=0;
+		salario[0] = 0;
+		salario[1] = 0;
+		salario[2] = 0;
 
-		while((cc=fgetc(stdin)!='\n'))
+
+		while((c=fgetc(stdin))!='\n')
 		{
-			printf("%d\n",cc);
 
 			if(c>='0' && c<='9')
 			{
@@ -35,12 +36,13 @@ int main()
 			else
 			{
 				j++;
+
 			}
 
 			
 		}
 
-		for(j=0;j<3;)
+		for(j=0;j<2;)
 		{
 			if(salario[j]>salario[j+1])
 			{
@@ -61,6 +63,7 @@ int main()
 			}
 		}
 
+		printf("Case %d: %d\n",i+1,salario[1]);
 
 	}
 

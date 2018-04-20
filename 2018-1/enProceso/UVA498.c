@@ -6,11 +6,10 @@
 int main()
 {
 
-	int factores[50],equis[50],a,b,num,c;
+	int factores[50],equis[50],a,b,num,c,negatividad;
 	int i=0;
-	float suma;
+	unsigned long long int suma;
 	int j=0;
-	int verificador=0;
 
 	for(;;)
 	{
@@ -18,61 +17,111 @@ int main()
 		i=0;
 		j=0;
 		num=0;
+		negatividad=0;
 
 		while((c=fgetc(stdin))!='\n')
 		{
 
+			if(c=='-')
+			{
+				negatividad=1;
+			}
 
 			if(c>='0' && c<='9')
 			{
 				num=num*10+(c-'0');
 			}
 
-			else
-			{
+			if((c<'0' || c>'9') && c!='-')
+			{	
+				if(negatividad==1)
+				{
+					num=-num;
+				}
+
 				factores[i]=num;
 				num=0;
 				i++;
+				negatividad=0;
 			}
+
+		}
+
+		if(negatividad==1)
+		{
+			num=-num;
+		}
+
+		factores[i]=num;
+		num=0;
+		i++;
+		negatividad=0;
 
 		
 		while((c=fgetc(stdin))!='\n')
 		{
-
-			if(c==EOF)
+			if(c=='-')
 			{
-				verificador=1;
-				break;
+				negatividad=1;
 			}
 
-			if(c>'0' && c<'9')
+			if(c>='0' && c<='9')
 			{
 				num=num*10+(c-'0');
 			}
 
-			else
+			if((c<'0' || c>'9') && c!='-')
 			{
+				if(negatividad==1)
+				{
+					num=-num;
+				}
+
 				equis[j]=num;
 				num=0;
 				j++;
+				negatividad=0;
 			}
 		}
 
-		if(verificador==1)
+		if(negatividad==1)
 		{
-			break;
+			num=-num;
 		}
+
+		equis[j]=num;
+		num=0;
+		j++;
+		negatividad=0;
+
+
+
 
 		for(a=0;a<j;a++)
 		{	
 			suma=0.0f;
 
-			for(b=0;b<i;b++)
+			for(b=i-1;b>=0;b--)
 			{
-				suma=suma+factores[b]*pow(equis[a],b);
+				suma=suma+factores[b]*(unsigned int)pow(equis[a],abs(i-b-1));
+				printf("%d*%d!%d",factores[b],equis[a],abs(i-b-1));
+				if(b!=0)
+				{
+					printf("+");
+				}
+
+				else
+				{
+					printf("=");
+				}
 			}
 
-			printf("%f",suma);
+			printf("%lld\n",suma);
+
+			/*if(a!=j-1)
+			{
+				printf(" ");
+			}*/
 		}
 
 		printf("\n");
@@ -80,8 +129,6 @@ int main()
 
 	}	
 
-	
-	}
 
 	return 0;
 }

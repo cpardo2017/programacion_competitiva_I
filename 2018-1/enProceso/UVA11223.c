@@ -16,7 +16,7 @@ int main ()
 	for(i=0;i<T;i++)
 	{
 		d=0;
-		printf("MESSAGE #%d\n",i+1);
+		printf("Message #%d\n",i+1);
 		while((c=fgetc(stdin))!='\n')
 		{	
 			d++;
@@ -122,6 +122,8 @@ int main ()
 							break;
 					case 80: printf("/");
 							break;
+					case 88: printf("\(");
+							break;
 					case 216: printf(")");
 							break;
 					case 66: printf("&");
@@ -136,9 +138,11 @@ int main ()
 							break;
 					case 214: printf("_");
 							break;
-					case 162: printf("''");
+					case 162: printf("\"");
 							break;
 					case 170: printf("@");
+							break;
+					case 140: printf(":");
 							break;
 				}
 
@@ -257,6 +261,10 @@ int main ()
 				}
 
 				printf("\n");
+				if(i!=T-1)
+				{
+					printf("\n");
+				}
 				suma=0;
 
 	}	
