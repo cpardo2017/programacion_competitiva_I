@@ -32,19 +32,20 @@ int main()
 
 	}
 
+
 	for(i=0;i<n;i++)
 	{
 		suma=suma+num[i];
 	}
 
-	if(n%2==0)
+	if(n%2==1)
 	{
 		mediana=num[j];
 	}
 
-	if(n%2==1)
+	if(n%2==0)
 	{
-		mediana=(num[j]+num[j+1])/2;
+		mediana=(num[j]+num[j-1])/2;
 	}
 
 	promedio=suma/n;

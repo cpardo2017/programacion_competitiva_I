@@ -4,7 +4,7 @@
 
 int main()
 {
-	int n,i,j,a,b,menor,diferencia,aux,distancia_menor,dis,fila,columna,fila_menor,columna_menor;
+	int n,i,j,a,b,diferencia,aux,dis,fila,columna,fila_menor,columna_menor,menor,distancia_menor;
 
 	printf("ingrese el coeficiente de la matriz cuadrada\n");
 	scanf("%d",&n);
@@ -27,8 +27,17 @@ int main()
  		for(b=0;b<n;b++)
  		{
 
- 			menor=10000;
- 			distancia_menor=1000;
+ 			if(a==0 && b==0)
+ 			{
+ 				menor=abs(original[a][b]-original[a][b+1]);
+ 				distancia_menor=1;
+ 			}
+
+ 			else
+ 			{
+ 				menor=abs(original[a][b]-original[0][0]);
+ 				distancia_menor=a+b;
+ 			}
 
  			for(i=0;i<n;i++)
  			{

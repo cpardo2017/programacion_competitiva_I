@@ -22,14 +22,23 @@ int main()
 		}
 	}
 
-	printf("las potencias de 2 son:\n");
-
-	for(i=0;i<=n;i++)
+	if(n==0)
 	{
-		printf("%d ",potencias[i]);
+		printf("1 es la potencia cero de cuaquier numero");
 	}
 
-	printf("\n");
+	else
+	{
+
+		printf("las potencias de 2 son:\n");
+
+		for(i=1;i<=n;i++)
+		{
+			printf("%d ",potencias[i]);
+		}
+	}
+
+		printf("\n");
 
 	return 0;
 }

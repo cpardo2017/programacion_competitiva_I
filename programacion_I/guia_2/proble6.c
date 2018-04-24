@@ -5,8 +5,12 @@ int main()
 {	
 	int nivel,i,j;
 
-	printf("ingrese hasta que nivel de triangulo de pascal quiere ver\n");
-	scanf("%d",&nivel);
+	do{
+
+		printf("ingrese hasta que nivel de triangulo de pascal quiere ver\n");
+		scanf("%d",&nivel);
+	}while(nivel<=0);
+	printf("\n");
 
 	int vector[nivel+1];
 	int copia[nivel+1];
