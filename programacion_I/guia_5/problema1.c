@@ -41,13 +41,19 @@ int main()
 	{
 		char nombre[100];
 		int anyoFundacion;
-		//Staff *staff=&asistentes[0];
+		Staff *staff;
 		int numStaff[6];
-		//Jugador *jugadores=&integrantes;
+		Jugador *jugadores;
 		int numJugadores;
-		//Fanatico *fanatcos=&seguidores[0];
+		Fanatico *fanatcos;
 		int numFanaticos;
 	} Equipo;
+
+	Equipo paricipantes;
+
+	paricipantes.staff=&asistentes[0];
+	paricipantes.jugadores=&integrantes[0];
+	paricipantes.fanatcos==&seguidores[0];
 
 	return 0;
 }

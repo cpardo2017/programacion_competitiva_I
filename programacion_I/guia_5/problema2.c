@@ -3,6 +3,46 @@
 #include <time.h>
 #include <string.h>
 
+typedef struct 
+{
+	char nombre[100];
+	int edad;
+	double agresividad;
+} Fanatico;
+
+typedef struct 
+{
+	char nombre[100];
+	int edad;
+	char posicion[100];
+	float regate;
+	float defensa;
+	float reflejos;
+	float velocidad;
+	float dureza;
+	float resistencia;
+} Jugador;
+
+typedef struct 
+{
+	char nombre[100];
+	int edad;
+	char rol[100];
+	int experiencia;
+} Staff;
+
+typedef struct 
+{
+	char nombre[100];
+	int anyoFundacion;
+	Staff *staff;
+	int numStaff[6];
+	Jugador *jugadores;
+	int numJugadores;
+	Fanatico *fanatcos;
+	int numFanaticos;
+} Equipo;
+
 int crearEnteroAleatorio(int limite)
 {
 	int numero;
@@ -65,12 +105,12 @@ Staff* crearStaff(int numDT, int numPrepArq, int numPrepFis, int numAsis, int nu
 	roles[4]=numFisio;
 	roles[5]=numDoc;
 
-	clase[0]="DT";
-	clase[1]="Preparador Arqueros";
-	calse[2]="Preparador Fisico";
-	clase[3]="Asistente";
-	clase[4]="Fisioterapeuta";
-	clase[5]="Doctor";
+	strcpy(clase[0],"DT");
+	strcpy(clase[1],"Preparador Arqueros");
+	strcpy(clase[2],"Preparador Fisico");
+	strcpy(clase[3],"Asistente");
+	strcpy(clase[4],"Fisioterapeuta");
+	strcpy(clase[5],"Doctor");
 
 	pt=(Staff*)malloc(asistentes*sizeof(Staff));
 
@@ -109,16 +149,18 @@ Jugador* crearJugadores(int numArq, int numDef, int numCelt, int numDel)
 	Jugador* pt;
 	int num_jugadores=numArq+numDef+numCelt+numDel;
 	int i,j;
+	int roles[4];
+	char clase[6][100];
 
 	roles[0]=numArq;
 	roles[1]=numDef;
 	roles[2]=numCelt;
 	roles[3]=numDel;
 
-	clase[0]="Arquero";
-	clase[1]="Defensa";
-	calse[2]="Centro";
-	clase[3]="Delantero";
+	strcpy(clase[0],"Arquero");
+	strcpy(clase[1],"Defensa");
+	strcpy(clase[2],"Centro");
+	strcpy(clase[3],"Delantero");
 
 	pt=(Jugador*)malloc(num_jugadores*sizeof(Jugador));
 
@@ -167,7 +209,7 @@ Equipo* crearEquipos(int numEquipos)
 	for(i=0;i<numEquipos;i++)
 	{
 		crearNombreAleatorio(pt[i].nombre,100);
-		pt[i].anyofundacion=crearEnteroAleatorio(2018);
+		pt[i].anyoFundacion=crearEnteroAleatorio(2018);
 		pt[i].numFanaticos=crearEnteroAleatorio(10);
 
 		for(j=0;j<4;j++)
@@ -204,5 +246,17 @@ void liberarEquipos(Equipo* equipos, int numEquipos)
 
 int main()
 {
+	Fanatico seguidores[1000];
+
+	Jugador integrantes[100];
+
+	Staff asistentes[1000];
+
+	Equipo paricipantes;
+
+	paricipantes.staff=&asistentes[0];
+	paricipantes.jugadores=&integrantes[0];
+	paricipantes.fanatcos==&seguidores[0];
+
 	return 0;
 }
