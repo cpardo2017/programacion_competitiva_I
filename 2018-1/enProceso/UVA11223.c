@@ -22,7 +22,7 @@ int main ()
 			d++;
 			if(c!=' ')
 			{
-				factor=(unsigned int)pow(2,d);
+				factor=(unsigned int) pow(2,d);
 
 				if(c=='-')
 				{
@@ -240,6 +240,8 @@ int main ()
 							break;
 					case 80: printf("/");
 							break;
+					case 88: printf("\(");
+							break;
 					case 216: printf(")");
 							break;
 					case 66: printf("&");
@@ -254,20 +256,20 @@ int main ()
 							break;
 					case 214: printf("_");
 							break;
-					case 162: printf("''");
+					case 162: printf("\"");
 							break;
 					case 170: printf("@");
 							break;
+					case 140: printf(":");
+							break;
 				}
 
-				printf("\n");
-				if(i!=T-1)
-				{
-					printf("\n");
-				}
-				suma=0;
 
-	}	
+		printf("\n");
+		
+		printf("\n");
+		suma=0;
+	}
 
 	return 0;
 }

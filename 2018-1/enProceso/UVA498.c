@@ -3,13 +3,40 @@
 #include <math.h>
 
 
+long long potencia(long long a,int b)
+{
+	int i,aux;
+
+	if(b==0)
+	{
+		return 1;
+	}
+
+	if(b==1)
+	{
+		return a;
+	}
+
+	aux=a;
+
+	for(i=0;i<b-1;i++)
+	{
+		a=a*aux;
+	}
+
+	return a;
+}
+
+
 int main()
 {
 
-	int factores[50],equis[50],a,b,num,c,negatividad;
+	int a,b,num,c,negatividad,contador;
 	int i=0;
-	unsigned long long int suma;
+	long long suma,factores[10000],equis[10000];
 	int j=0;
+
+	contador=0;
 
 	for(;;)
 	{
@@ -99,12 +126,12 @@ int main()
 
 		for(a=0;a<j;a++)
 		{	
-			suma=0.0f;
+			suma=0;
 
 			for(b=i-1;b>=0;b--)
 			{
-				suma=suma+factores[b]*(unsigned int)pow(equis[a],abs(i-b-1));
-				printf("%d*%d!%d",factores[b],equis[a],abs(i-b-1));
+				suma=suma+factores[b]*potencia(equis[a],abs(i-b-1));
+				/*printf("%lld*%lld!%d(%lld)",factores[b],equis[a],abs(i-b-1),potencia(equis[a],abs(i-b-1)));
 				if(b!=0)
 				{
 					printf("+");
@@ -113,10 +140,15 @@ int main()
 				else
 				{
 					printf("=");
-				}
+				}*/
 			}
 
-			printf("%lld\n",suma);
+			printf("%lld",suma);
+
+			if(a<j-1)
+			{
+				printf(" ");
+			}
 
 			/*if(a!=j-1)
 			{
@@ -125,8 +157,6 @@ int main()
 		}
 
 		printf("\n");
-
-
 	}	
 
 
