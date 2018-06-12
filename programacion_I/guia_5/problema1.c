@@ -44,8 +44,8 @@ int main()
 		Staff *staff;
 		int numStaff[6];
 		Jugador *jugadores;
-		int numJugadores;
-		Fanatico *fanatcos;
+		int numJugadores[4];
+		Fanatico *fanaticos;
 		int numFanaticos;
 	} Equipo;
 

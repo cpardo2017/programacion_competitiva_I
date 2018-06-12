@@ -38,10 +38,12 @@ typedef struct
 	Staff *staff;
 	int numStaff[6];
 	Jugador *jugadores;
-	int numJugadores;
-	Fanatico *fanatcos;
+	int numJugadores[4];
+	Fanatico *fanaticos;
 	int numFanaticos;
 } Equipo;
+
+//======================================================================================================================
 
 int crearEnteroAleatorio(int limite)
 {
@@ -223,7 +225,7 @@ Equipo* crearEquipos(int numEquipos)
 		}
 
 		pt[i].staff=crearStaff(pt[i].numStaff[0],pt[i].numStaff[1],pt[i].numStaff[2],pt[i].numStaff[3],pt[i].numStaff[4],pt[i].numStaff[5]);
-		pt[i].jugadores=crearJugadore(pt[i].numJugadores[0],pt[i].numJugadores[1],pt[i].numJugadores[2],pt[i].numJugadores[3]);
+		pt[i].jugadores=crearJugadores(pt[i].numJugadores[0],pt[i].numJugadores[1],pt[i].numJugadores[2],pt[i].numJugadores[3]);
 		pt[i].fanaticos=crearFanaticos(pt[i].numFanaticos);
 	}
 
@@ -256,7 +258,7 @@ int main()
 
 	paricipantes.staff=&asistentes[0];
 	paricipantes.jugadores=&integrantes[0];
-	paricipantes.fanatcos==&seguidores[0];
+	paricipantes.fanaticos==&seguidores[0];
 
 	return 0;
 }

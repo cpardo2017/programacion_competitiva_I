@@ -2,11 +2,54 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef struct 
+{
+	char nombre[100];
+	int edad;
+	double agresividad;
+} Fanatico;
+
+
+typedef struct 
+{
+	char nombre[100];
+	int edad;
+	char posicion[100];
+	float regate;
+	float defensa;
+	float reflejos;
+	float velocidad;
+	float dureza;
+	float resistencia;
+} Jugador;
+
+typedef struct 
+{
+	char nombre[100];
+	int edad;
+	char rol[100];
+	int experiencia;
+} Staff;
+
+typedef struct 
+{
+	char nombre[100];
+	int anyoFundacion;
+	Staff *staff;
+	int numStaff[6];
+	Jugador *jugadores;
+	int numJugadores[4];
+	Fanatico *fanaticos;
+	int numFanaticos;
+} Equipo;
+
+//========================================================================
+
 void ordenarFanaticos(Fanatico* arreglo,int numJugadores)
 {
 	int i,j;
 
-	Fanatico* aux;
+	Fanatico aux;
 
 	for(i=0;i<numJugadores-1;i++)
 	{
@@ -36,7 +79,7 @@ void ordenarStaff(Staff* arreglo,int numStaff)
 {
 	int i,j;
 
-	Staff* aux;
+	Staff aux;
 
 	for(i=0;i<numStaff-1;i++)
 	{
@@ -66,7 +109,7 @@ void ordenarJugadores(Jugador* arreglo,int numJugadores)
 {
 	int i,j;
 
-	Jugadores* aux;
+	Jugador aux;
 
 	for(i=0;i<numJugadores-1;i++)
 	{
@@ -96,7 +139,7 @@ void ordenarDB(Equipo* equipos,int num_de_equipos)
 {
 	int i,j;
 
-	Equipo* aux;
+	Equipo aux;
 
 	for(i=0;i<num_de_equipos-1;i++)
 	{
@@ -135,11 +178,11 @@ void ordenarDB(Equipo* equipos,int num_de_equipos)
 		}
 	}
 
-	for(i=0;i<num_de_equipos,i++)
+	for(i=0;i<num_de_equipos;i++)
 	{
 		ordenarJugadores(equipos[i].jugadores,num2[i]);
 		ordenarStaff(equipos[i].staff,num1[i]);
-		ordenarFanaticos(equipos[i].fanatico,equipos[i].numFaticos);
+		ordenarFanaticos(equipos[i].fanaticos,equipos[i].numFanaticos);
 	}
 }
 

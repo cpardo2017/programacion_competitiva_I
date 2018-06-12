@@ -3,20 +3,26 @@
 #include <assert.h>
 #include <string.h>
 
-void swap(int *a,int *b)
-{
-	int aux= *a;
-	*a=*b;
-	*b=aux;
+typedef struct Equipo_del_torneo{
 
-	return;
-}
+	char nombre[30];
+	int puntos;
+	int partidos_jugados;
+	int partidos_ganados;
+	int partidos_perdidos;
+	int partidos_empatados;
+	int diferencia_de_goles;
+	int goles_marcados;
+	int goles_contra;
+} Equipo;
 
-void swapChar(char *a,char *b)
-{
-	int aux= *a;
-	*a=*b;
-	*b=aux;
+void swap(Equipo *a,Equipo *b)
+{	
+	Equipo *aux;
+
+	aux=a;
+	a=b;
+	b=aux;
 
 	return;
 }
@@ -24,9 +30,8 @@ void swapChar(char *a,char *b)
 int main()
 {
 	int torneos,i,c,j,num_equipos,num_partidos,goles1,goles2,a,b,victoria,derrota,empate,contenedor;
-	char nombre_torneo[100],equipo1[30],equipo2[30],partido[1000],aux[100];
+	char nombre_torneo[100],equipo1[3000],equipo2[3000],partido[1000],aux[1000];
 	char *token;
-
 
 	scanf("%d",&torneos);
 
@@ -34,20 +39,12 @@ int main()
 	{
 		scanf("%[^\n]",nombre_torneo);
 
+		c=fgetc(stdin);
+		assert(c=='\n');
+
 		scanf("%d",&num_equipos);
 
-		struct Equipo_del_torneo{
-
-			char nombre[30];
-			int puntos;
-			int partidos_jugados;
-			int partidos_ganados;
-			int partidos_perdidos;
-			int partidos_empatados;
-			int diferencia_de_goles;
-			int goles_marcados;
-			int goles_contra;
-		} equipo[num_equipos];
+		Equipo equipo[num_equipos];
 
 		for(j=0;j<num_equipos;j++)
 		{
@@ -91,7 +88,7 @@ int main()
 				goles2=goles2*10+aux[a];
 			}
 
-			token=strtok(NULL,"#");
+			token=strtok(NULL,"\n");
 			strcpy(equipo2,token);
 
 
@@ -130,7 +127,6 @@ int main()
 				}
 			}
 
-
 			equipo[a].goles_marcados+=goles1;
 			equipo[a].goles_contra+=goles2;
 
@@ -167,84 +163,42 @@ int main()
 		{
 			if(equipo[j].puntos<equipo[j+1].puntos)
 			{
-				swapChar(&equipo[j].nombre,&equipo[j+1].nombre);
-				swap(&equipo[j].puntos,&equipo[j+1].puntos);
-				swap(&equipo[j].partidos_ganados,&equipo[j+1].partidos_ganados);
-				swap(&equipo[j].partidos_empatados,&equipo[j+1].partidos_empatados);
-				swap(&equipo[j].partidos_perdidos,&equipo[j+1].partidos_perdidos);
-				swap(&equipo[j].diferencia_de_goles,&equipo[j+1].diferencia_de_goles);
-				swap(&equipo[j].goles_marcados,&equipo[j+1].goles_marcados);
-				swap(&equipo[j].goles_contra,&equipo[j+1].goles_contra);
+				swap(&equipo[j],&equipo[j+1]);
 			}
 
 			if(equipo[j].puntos==equipo[j+1].puntos)
 			{
 				if(equipo[j].partidos_ganados<equipo[j+1].partidos_ganados)
 				{
-					swapChar(&equipo[j].nombre,&equipo[j+1].nombre);
-					swap(&equipo[j].puntos,&equipo[j+1].puntos);
-					swap(&equipo[j].partidos_ganados,&equipo[j+1].partidos_ganados);
-					swap(&equipo[j].partidos_empatados,&equipo[j+1].partidos_empatados);
-					swap(&equipo[j].partidos_perdidos,&equipo[j+1].partidos_perdidos);
-					swap(&equipo[j].diferencia_de_goles,&equipo[j+1].diferencia_de_goles);
-					swap(&equipo[j].goles_marcados,&equipo[j+1].goles_marcados);
-					swap(&equipo[j].goles_contra,&equipo[j+1].goles_contra);
+					swap(&equipo[j],&equipo[j+1]);
 				}
 
 				if(equipo[j].partidos_ganados==equipo[j+1].partidos_ganados)
 				{
 					if(equipo[j].diferencia_de_goles<equipo[j+1].diferencia_de_goles)
 					{
-						swapChar(&equipo[j].nombre,&equipo[j+1].nombre);
-						swap(&equipo[j].puntos,&equipo[j+1].puntos);
-						swap(&equipo[j].partidos_ganados,&equipo[j+1].partidos_ganados);
-						swap(&equipo[j].partidos_empatados,&equipo[j+1].partidos_empatados);
-						swap(&equipo[j].partidos_perdidos,&equipo[j+1].partidos_perdidos);
-						swap(&equipo[j].diferencia_de_goles,&equipo[j+1].diferencia_de_goles);
-						swap(&equipo[j].goles_marcados,&equipo[j+1].goles_marcados);
-						swap(&equipo[j].goles_contra,&equipo[j+1].goles_contra);
+						swap(&equipo[j],&equipo[j+1]);
 					}
 
 					if(equipo[j].diferencia_de_goles==equipo[j+1].diferencia_de_goles)
 					{
 						if(equipo[j].goles_marcados<equipo[j+1].goles_marcados)
 						{
-							swapChar(&equipo[j].nombre,&equipo[j+1].nombre);
-							swap(&equipo[j].puntos,&equipo[j+1].puntos);
-							swap(&equipo[j].partidos_ganados,&equipo[j+1].partidos_ganados);
-							swap(&equipo[j].partidos_empatados,&equipo[j+1].partidos_empatados);
-							swap(&equipo[j].partidos_perdidos,&equipo[j+1].partidos_perdidos);
-							swap(&equipo[j].diferencia_de_goles,&equipo[j+1].diferencia_de_goles);
-							swap(&equipo[j].goles_marcados,&equipo[j+1].goles_marcados);
-							swap(&equipo[j].goles_contra,&equipo[j+1].goles_contra);
+							swap(&equipo[j],&equipo[j+1]);
 						}
 
 						if(equipo[j].goles_marcados==equipo[j+1].goles_marcados)
 						{
 							if(equipo[j].partidos_jugados>equipo[j+1].partidos_jugados)
 							{
-								swapChar(&equipo[j].nombre,&equipo[j+1].nombre);
-								swap(&equipo[j].puntos,&equipo[j+1].puntos);
-								swap(&equipo[j].partidos_ganados,&equipo[j+1].partidos_ganados);
-								swap(&equipo[j].partidos_empatados,&equipo[j+1].partidos_empatados);
-								swap(&equipo[j].partidos_perdidos,&equipo[j+1].partidos_perdidos);
-								swap(&equipo[j].diferencia_de_goles,&equipo[j+1].diferencia_de_goles);
-								swap(&equipo[j].goles_marcados,&equipo[j+1].goles_marcados);
-								swap(&equipo[j].goles_contra,&equipo[j+1].goles_contra);
+								swap(&equipo[j],&equipo[j+1]);
 							}
 
 							if(equipo[j].partidos_jugados==equipo[j+1].partidos_jugados)
 							{
 								if(strcmp(equipo[j].nombre,equipo[j+1].nombre)>0)
 								{
-									swapChar(&equipo[j].nombre,&equipo[j+1].nombre);
-									swap(&equipo[j].puntos,&equipo[j+1].puntos);
-									swap(&equipo[j].partidos_ganados,&equipo[j+1].partidos_ganados);
-									swap(&equipo[j].partidos_empatados,&equipo[j+1].partidos_empatados);
-									swap(&equipo[j].partidos_perdidos,&equipo[j+1].partidos_perdidos);
-									swap(&equipo[j].diferencia_de_goles,&equipo[j+1].diferencia_de_goles);
-									swap(&equipo[j].goles_marcados,&equipo[j+1].goles_marcados);
-									swap(&equipo[j].goles_contra,&equipo[j+1].goles_contra);
+									swap(&equipo[j],&equipo[j+1]);
 								}
 							}
 						}

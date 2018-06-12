@@ -3,21 +3,20 @@
 #include <stdlib.h>
 #include <assert.h>
 
+typedef struct tablilla
+{
+	int num_participante;
+	int existencia;
+	int problemas_resueltos;
+	int tiempo;
+	int tiempo_problema[9];
+	int existencia_problema[9];
+} estructura;
+
 int main()
 {
 	int i,n,c,a,num,t,salir,j,b,aux,comprobador,problema;
 	char estado,k;
-
-
-	struct tablilla
-		{
-			int num_participante;
-			int existencia;
-			int problemas_resueltos;
-			int tiempo;
-			int tiempo_problema[9];
-			int existencia_problema[9];
-		};
 
 	scanf("%d",&n);
 	k=fgetc(stdin);
@@ -29,14 +28,7 @@ int main()
 		salir=0;
 		a=0;
 
-		struct tablilla participante[1000000]={
-											0,
-											0,
-											0,
-											0,
-											0,
-											0
-										};
+		estructura participante[1000000]={0,0,0,0,0,0};
 
 		for(;;)
 		{

@@ -30,13 +30,14 @@ int main()
 			num_cadenas=num_cadenas*10+(c-'0');
 		}
 
-
-		char cadena[num_cadenas][largo],contenedor[largo];
+		char cadena[num_cadenas][largo+1],contenedor[largo+1];
 		int desorden[num_cadenas];
 
 		for(j=0;j<num_cadenas;j++)
 		{
 			scanf("%s",cadena[j]);
+			c=fgetc(stdin);
+			assert(c=='\n');
 		}
 
 		for(j=0;j<num_cadenas;j++)
@@ -88,7 +89,10 @@ int main()
 			printf("%s\n",cadena[j]);
 		}
 
-		printf("\n");
+		if(i<casos-1)
+		{
+			printf("\n");
+		}
 	}
 
 	return 0;
